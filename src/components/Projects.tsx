@@ -352,7 +352,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
 
             <motion.div
-              className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border flex items-center justify-center flex-shrink-0"
+              className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border flex items-center justify-center shrink-0"
               animate={{
                 borderColor: isHovered ? "#ffffff" : "#d1d5db",
                 backgroundColor: isHovered ? "#ffffff" : "transparent",
@@ -363,7 +363,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 animate={{ rotate: isHovered ? 45 : 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <ArrowUpRight size={16} className="sm:w-[18px] sm:h-[18px] text-black" />
+                <ArrowUpRight size={16} className="sm:w-4.5 sm:h-4.5 text-black" />
               </motion.div>
             </motion.div>
           </div>
@@ -469,7 +469,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   
                   <div className="flex items-center gap-2 sm:gap-3">
                     <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full bg-white/10 flex items-center justify-center ring-2 ring-white/20">
-                      <User size={12} className="sm:w-[14px] sm:h-[14px] md:w-[16px] md:h-[16px] text-white" />
+                      <User size={12} className="sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-white" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-white text-xs sm:text-sm font-medium">

@@ -3,7 +3,7 @@
 import { Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
 import { getCalApi } from "@calcom/embed-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, Variants } from "framer-motion"
 
 const menuItems = [
   { label: "home", href: "#home" },
@@ -12,7 +12,7 @@ const menuItems = [
   { label: "services", href: "#services" },
 ];
 
-const menuVariants = {
+const menuVariants: Variants = {
   hidden: {
     y: "-100%",
     opacity: 0,
@@ -40,7 +40,7 @@ const menuVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: {
     y: -40,
     opacity: 0,
@@ -58,22 +58,31 @@ const itemVariants = {
     opacity: 0,
     transition: {
       duration: 0.25,
-      ease: "easeIn",
+      ease: [0.33, 1, 0.68, 1],
     },
   },
 };
 
-const bottomVariants = {
-  hidden: { opacity: 0, y: 20 },
+const bottomVariants: Variants = {
+  hidden: { 
+    opacity: 0, 
+    y: 20 
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, delay: 0.3, ease: "easeOut" },
+    transition: { 
+      duration: 0.4, 
+      delay: 0.3, 
+      ease: [0.22, 1, 0.36, 1] 
+    },
   },
   exit: {
     opacity: 0,
     y: 20,
-    transition: { duration: 0.2 },
+    transition: { 
+      duration: 0.2 
+    },
   },
 };
 
@@ -102,10 +111,8 @@ const Header = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // Close menu first
     setMenuOpen(false);
     
-    // Wait for menu to close, then scroll
     setTimeout(() => {
       const targetId = href.replace('#', '');
       const element = document.getElementById(targetId);
@@ -129,7 +136,7 @@ const Header = () => {
       {/* Header Bar */}
       <div className="w-full h-auto items-end flex justify-between p-3 sm:p-4 md:p-5 lg:p-6 font-ibm">
         <div className="w-full flex justify-end items-center gap-3 sm:gap-4 md:gap-6">
-          {/* Book a Call Button - Hidden on small mobile, visible from sm */}
+          {/* Book a Call Button */}
           <button
             className="hidden sm:block px-3 py-2 sm:px-4 sm:py-3 md:px-5 md:py-4 rounded-xl md:rounded-2xl font-medium text-xs sm:text-sm bg-black/95 text-white tracking-wide hover:cursor-pointer hover:bg-black transition-colors"
             data-cal-namespace="30min"
@@ -179,19 +186,17 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* Bottom Section - Mobile Layout */}
+            {/* Bottom Section */}
             <motion.div
               className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-10 border-t border-gray-100 bg-white md:border-t-0 md:bg-transparent"
               variants={bottomVariants}
             >
               {/* Mobile & Tablet Layout */}
               <div className="flex flex-col gap-4 md:hidden">
-                {/* Tagline */}
                 <p className="text-xs sm:text-sm text-gray-400">
                   Proud builder of things that actually work.
                 </p>
                 
-                {/* Book a Call Button - Mobile */}
                 <button
                   className="w-full sm:w-auto px-4 py-3 rounded-xl font-medium text-sm bg-black/95 text-white tracking-wide hover:cursor-pointer hover:bg-black transition-colors"
                   data-cal-namespace="30min"
@@ -201,7 +206,6 @@ const Header = () => {
                   BOOK A CALL
                 </button>
                 
-                {/* Social Links */}
                 <div className="flex items-center gap-4 text-sm">
                   <a 
                     href="https://www.linkedin.com/in/mHassan-Iftikhar/" 
@@ -224,12 +228,10 @@ const Header = () => {
 
               {/* Desktop Layout */}
               <div className="hidden md:flex md:items-center md:justify-between">
-                {/* Tagline - Left */}
                 <p className="text-xs lg:text-sm text-gray-400">
                   Proud builder of things that actually work.
                 </p>
                 
-                {/* Right Side - Button & Links */}
                 <div className="flex items-center gap-4 lg:gap-6">
                   <button
                     className="px-4 py-3 lg:px-5 lg:py-4 rounded-xl lg:rounded-2xl font-medium text-sm bg-black/95 text-white tracking-wide hover:cursor-pointer hover:bg-black transition-colors"
