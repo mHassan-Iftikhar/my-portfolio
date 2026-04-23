@@ -13,7 +13,7 @@ const Hero = () => {
           {/* Profile Image */}
           <div className="rounded-full w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 overflow-hidden shrink-0">
             <Image
-              src="/images/haxan.jpg"
+              src="/images/haxan.jpeg"
               alt="Hassan Iftikhar"
               width={500}
               height={500}
