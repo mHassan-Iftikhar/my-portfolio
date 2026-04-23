@@ -16,11 +16,7 @@ const page = () => {
       <Hero />
       <About />
       <Projects />
-      <FlowingMenu items={demoItems}
-        textColor="#000000"
-        bgColor="#ffffff"
-        borderColor="#e5e5e5"
-        />
+      <FlowingMenu />
     </>
   )
 }
