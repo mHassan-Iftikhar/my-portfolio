@@ -7,7 +7,7 @@ const Hero = () => {
       id="home"
       className="w-full min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-0 py-12 sm:py-16 md:py-20"
     >
-      <div className="w-full max-w-7xl lg:w-[70vw] flex flex-col items-start justify-between gap-8 sm:gap-12 md:gap-16 lg:gap-100 tracking-tighter font-ibm">
+      <div className="w-full max-w-7xl lg:w-[70vw] flex flex-col items-start justify-between gap-8 sm:gap-12 md:gap-16 lg:gap-60 tracking-tighter font-ibm">
         {/* Profile Section */}
         <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
           {/* Profile Image */}
