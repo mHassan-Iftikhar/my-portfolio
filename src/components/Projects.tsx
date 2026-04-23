@@ -10,7 +10,7 @@ interface Project {
   about: string;
 }
 
-const projects = [
+const projects: Project[] = [
   {
     id: 1,
     number: "01",
@@ -33,7 +33,7 @@ const projects = [
     title: "Rao Umer",
     category: "Portfolio Website",
     about:
-      "A professional trading portfolio website created to present the client’s profile, experience, and portfolio content in a clear and modern way.",
+      "A professional trading portfolio website created to present the client's profile, experience, and portfolio content in a clear and modern way.",
   },
   {
     id: 4,
@@ -53,71 +53,97 @@ const projects = [
   },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.1,
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+    },
+  }),
+};
+
 const Projects = () => {
   return (
-    <section id="projects" className="w-full bg-white py-16 md:py-24 font-ibm">
-      <div className="px-4 md:px-[15%]">
-        {/* Header */}
+    <section id="projects" className="w-full bg-white py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+        {/* ── Section Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 md:mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-16 md:mb-20"
         >
-          <p className="text-xs uppercase tracking-[0.25em] text-red-500 font-semibold mb-3">
-            Selected Work
-          </p>
-
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-medium tracking-tighter leading-none">
-              Projects
-            </h2>
+          <div className="mb-5 flex items-center text-red-500 gap-3">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-red-500">
+              Selected Work
+            </span>
           </div>
+
+          <h2 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-medium tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
+            Projects
+          </h2>
         </motion.div>
 
-        {/* Top line */}
-        <div className="w-full h-px bg-gray-200" />
-
-        {/* Projects */}
-        <div className="w-full">
+        {/* ── Project List ── */}
+        <div className="space-y-0">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="border-b border-gray-200 py-6 md:py-8"
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={fadeUp}
+              className="group relative border-b border-neutral-100 py-8 first:border-t md:py-10"
             >
-              <div className="grid grid-cols-1 md:grid-cols-[80px_1.2fr_140px_2fr] gap-4 md:gap-6 items-start">
+              <div className="flex flex-col gap-5 md:flex-row md:items-start md:gap-12">
                 {/* Number */}
-                <div className="text-xs font-mono text-gray-400 pt-1">
+                <span className="shrink-0 font-mono text-sm font-medium tabular-nums text-neutral-300 transition-colors duration-300 group-hover:text-neutral-900 md:mt-1 md:w-10">
                   {project.number}
-                </div>
+                </span>
 
-                {/* Title */}
-                <div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight">
-                    {project.title}
-                  </h3>
-                </div>
+                {/* Content */}
+                <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+                  <div className="space-y-2">
+                    {/* Title */}
+                    <h3 className="text-2xl font-semibold tracking-tight text-neutral-900 transition-colors duration-300 group-hover:text-neutral-700 sm:text-3xl">
+                      {project.title}
+                    </h3>
 
-                {/* Category */}
-                <div className="pt-1">
-                  <span className="text-xs uppercase tracking-[0.18em] text-gray-400">
-                    {project.category}
-                  </span>
-                </div>
+                    {/* Category Badge */}
+                    <span className="inline-block rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-neutral-500 transition-colors duration-300 group-hover:border-neutral-300 group-hover:bg-white group-hover:text-neutral-700">
+                      {project.category}
+                    </span>
+                  </div>
 
-                {/* About */}
-                <div>
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed max-w-xl">
+                  {/* Description */}
+                  <p className="max-w-lg text-[15px] leading-relaxed text-neutral-500 transition-colors duration-300 group-hover:text-neutral-700 sm:text-base">
                     {project.about}
                   </p>
                 </div>
+
+                {/* Subtle arrow indicator on hover */}
+                <span className="hidden shrink-0 self-center text-neutral-300 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:text-neutral-400 md:inline-block">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </span>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

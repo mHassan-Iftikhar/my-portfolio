@@ -33,7 +33,7 @@ const Hero = () => {
         </div>
 
         {/* Hero Heading */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight sm:leading-tight md:leading-tight lg:leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-medium leading-tight sm:leading-tight md:leading-tight lg:leading-tight">
           Frontend Engineer Specializing
           <br className="hidden sm:block" />
           <span className="sm:hidden"> </span>

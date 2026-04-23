@@ -43,11 +43,6 @@ const FlowingMenu = () => {
                 Services
               </h2>
             </div>
-
-            <p className="text-sm md:text-base text-gray-500 max-w-md leading-relaxed">
-              I build modern, fast, and scalable web experiences using a
-              carefully selected tech stack.
-            </p>
           </div>
         </motion.div>
 
